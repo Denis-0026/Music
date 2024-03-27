@@ -1,0 +1,20 @@
+<div class="audio-recordings-list">
+  <div class="audio-recordings-list_title">
+    <p>Список аудиозаписей</p>
+  </div>
+  <div class="audio-recordings-list_table">
+    <app-audio-recordings-list-table
+      [data$]="audioRecordingsList$"
+    ></app-audio-recordings-list-table>
+  </div>
+  <div>
+    <app-audio-recordings-list-pagination
+      [length$]="audioRecordingsListLength$"
+      [meta$]="meta$"
+      (curentPagination)="changePagination($event)"
+    ></app-audio-recordings-list-pagination>
+  </div>
+  <div class="audio-recordings-list_player">
+    <app-player></app-player>
+  </div>
+</div>

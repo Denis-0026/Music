@@ -1,0 +1,32 @@
+<div *ngIf="data$ | async as data">
+  <table mat-table [dataSource]="data">
+    <!-- Id аудиозаписи -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Номер</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <!-- Название аудиозаписи -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Название</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Имя файла -->
+    <ng-container matColumnDef="fileName">
+      <th mat-header-cell *matHeaderCellDef>Имя файла</th>
+      <td mat-cell *matCellDef="let element">{{ element.fileName }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr
+      mat-row
+      (click)="selectAudio(row.url)"
+      [ngClass]="{
+        'selected-row': (selectedAudioURL$ | async) === row.url
+      }"
+      class="audio-item"
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
+  </table>
+</div>

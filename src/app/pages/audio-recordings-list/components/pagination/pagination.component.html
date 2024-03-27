@@ -1,0 +1,11 @@
+<div *ngIf="meta$ | async as meta">
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    (page)="changePagination($event)"
+    [length]="length$ | async"
+    [pageSize]="meta.pageSize"
+    [pageIndex]="meta.pageIndex"
+  >
+  </mat-paginator>
+</div>

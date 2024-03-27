@@ -1,0 +1,9 @@
+<div *ngIf="audioURL$ | async as audioURL">
+  <audio
+    class="player"
+    controls
+    preload="none"
+    [src]="audioURL"
+    autoplay
+  ></audio>
+</div>
